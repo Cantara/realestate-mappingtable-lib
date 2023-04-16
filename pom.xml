@@ -15,7 +15,7 @@
     <maven.compiler.source>17</maven.compiler.source>
     <maven.compiler.target>17</maven.compiler.target>
       <mainClass>no.cantara.realestate.mappingtable.Main</mainClass>
-      <jackson.version>2.13.0</jackson.version>
+      <jackson.version>2.14.2</jackson.version>
       <slf4j.version>1.7.32</slf4j.version>
       <logback.version>1.2.6</logback.version>
       <slf4j.version>1.7.36</slf4j.version>
