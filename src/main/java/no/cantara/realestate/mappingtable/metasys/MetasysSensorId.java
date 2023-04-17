@@ -11,4 +11,12 @@ public class MetasysSensorId extends SensorId {
         this.metasysDbId = metasysDbId;
         this.metasysObjectReference = metasysObjectReference;
     }
+
+    public String getMetasysDbId() {
+        return metasysDbId;
+    }
+
+    public String getMetasysObjectReference() {
+        return metasysObjectReference;
+    }
 }
