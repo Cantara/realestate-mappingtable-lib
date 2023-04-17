@@ -10,8 +10,13 @@ class CsvReaderTest {
 
     @Test
     void readMetasysBasic() {
-//        File inputFile = new File("import-config/metasys_objectid.csv");
-        Map<String, String> anything = CsvReader.findObjectIds("test/resources/MetasysBasic.csv");
+        Map<String, String> anything = CsvReader.findObjectIds("src/test/resources/MetasysBasic.csv");
         assertNotNull(anything);
+    }
+
+    @Test
+    void readGeneric() {
+        CsvCollection collection = CsvReader.parse("src/test/resources/MetasysBasic.csv");
+        assertNotNull(collection);
     }
 }
