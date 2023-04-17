@@ -2,6 +2,7 @@ package no.cantara.realestate.mappingtable.repository;
 
 import no.cantara.realestate.mappingtable.MappedSensorId;
 import no.cantara.realestate.mappingtable.MappingKey;
+import no.cantara.realestate.mappingtable.rec.RecObject;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
@@ -23,6 +24,11 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
     @Override
     public List<MappedSensorId> find(MappingKey mappingKey) {
         return null;
+    }
+
+    @Override
+    public long updateRec(RecObject recObject) {
+        return 0;
     }
 
     @Override

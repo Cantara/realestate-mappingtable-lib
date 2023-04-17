@@ -1,7 +1,7 @@
 package no.cantara.realestate.mappingtable.metasys;
 
 import no.cantara.realestate.mappingtable.MappedSensorId;
-import no.cantara.realestate.mappingtable.rec.RecObject;
+import no.cantara.realestate.mappingtable.rec.SensorRecObject;
 import no.cantara.realestate.mappingtable.repository.MappedIdRepository;
 import no.cantara.realestate.mappingtable.repository.MappedIdRepositoryImpl;
 import org.junit.jupiter.api.BeforeEach;
@@ -22,7 +22,7 @@ public class MetasysSensorIdCrudTest {
     void add() {
         assertEquals(0, repository.size());
         MetasysSensorId sensorId = new MetasysSensorId("dbId", "objectRef");
-        RecObject recObject = new RecObject("recid");
+        SensorRecObject recObject = new SensorRecObject("recid");
         MappedSensorId mappedSensorId = new MappedSensorId(sensorId, recObject);
         repository.add(mappedSensorId);
         assertEquals(1, repository.size());
