@@ -7,15 +7,23 @@
   <groupId>no.cantara.realestate</groupId>
   <artifactId>mappingtable-app</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  
-   <parent>
+  <url>https://github.com/Cantara/realestate-mappingtable-app</url>
+
+  <parent>
         <groupId>no.cantara.emi</groupId>
         <artifactId>parent</artifactId>
         <version>8</version>
-    </parent>
+   </parent>
 
-  <url>https://github.com/Cantara/realestate-mappingtable-app</url>
-
+  
+  
+  <scm>
+        <developerConnection>scm:git:ssh://git@github.com/cantara/realestate-mappingtable-app.git</developerConnection>
+        <connection>scm:git:https://github.com/cantara/realestate-mappingtable-app.git</connection>
+        <url>https://github.com/cantara/realestate-mappingtable-app</url>
+        <tag>HEAD</tag>
+  </scm>
+  
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <maven.compiler.source>17</maven.compiler.source>
