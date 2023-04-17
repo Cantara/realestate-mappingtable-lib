@@ -1,0 +1,2 @@
+RecId,RealEstate,Building,Floor,Section,ServesRoom,PlacementRoom,ClimateZone,ElectricityZone,SensorType,MeasurementUnit,Name,Description,Tfm
+aaa-bbb-ccc,re16,1,02,,101,101,1,,co2,ppm,TFM-RY02101,CO2 rom 101,TFM-RY02101

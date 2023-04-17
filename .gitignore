@@ -34,6 +34,3 @@ dependency-reduced-pom.xml
 local_config.properties
 local_override.properties
 
-# Import Data
-*.csv
-import-data/*.json

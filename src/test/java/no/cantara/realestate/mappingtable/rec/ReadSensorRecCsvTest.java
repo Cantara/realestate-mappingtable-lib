@@ -22,4 +22,15 @@ public class ReadSensorRecCsvTest {
         assertEquals("re16", record.get("RealEstate"));
         assertEquals("",record.get("Section"));
     }
+
+    @Test
+    void readTfm() {
+        CsvCollection collection = CsvReader.parse("src/test/resources/RecSensorTfm.csv");
+        assertNotNull(collection);
+        assertTrue(collection.getColumnNames().contains("RecId"));
+        assertTrue(collection.getColumnNames().contains("Tfm"));
+        Map record = collection.getRecords().get(0);
+        assertEquals("aaa-bbb-ccc", record.get("RecId"));
+        assertEquals("TFM-RY02101", record.get("Tfm"));
+    }
 }

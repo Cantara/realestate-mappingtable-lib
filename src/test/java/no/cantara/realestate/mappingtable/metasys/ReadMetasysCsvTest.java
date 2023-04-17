@@ -22,4 +22,16 @@ public class ReadMetasysCsvTest {
         assertEquals("208540b1-ab8a-566a-8a41-8b4cee51abcd", record.get("MetasysObjectId"));
         assertEquals("aaa-bbb-ccc", record.get("RecId"));
     }
+
+    @Test
+    void readWithTverrfagligMerkesystem() {
+        //RecId is deliberately missing from this test file.
+        CsvCollection collection = CsvReader.parse("src/test/resources/MetasysTfm.csv");
+        assertNotNull(collection);
+        assertTrue(collection.getColumnNames().contains("Tfm"));
+        assertTrue(collection.getColumnNames().contains("RecId"));
+        Map record = collection.getRecords().get(0);
+        assertEquals("TFM-RY02101", record.get("Tfm"));
+        assertEquals("", record.get("RecId"));
+    }
 }
