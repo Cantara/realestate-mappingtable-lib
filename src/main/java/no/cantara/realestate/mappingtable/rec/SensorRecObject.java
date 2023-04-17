@@ -1,5 +1,7 @@
 package no.cantara.realestate.mappingtable.rec;
 
+import no.cantara.realestate.mappingtable.tfm.Tfm;
+
 import java.time.Instant;
 
 public class SensorRecObject extends RecObject {
@@ -16,9 +18,10 @@ public class SensorRecObject extends RecObject {
     private String sensorType;
     private String description;
     private String measurementUnit;
-    private String recId;
     private Instant createdDate;
     private Instant lastUpdatedDate;
+
+    private Tfm tfm;
     public SensorRecObject(String recId) {
         super(recId);
     }
@@ -111,15 +114,6 @@ public class SensorRecObject extends RecObject {
         this.measurementUnit = measurementUnit;
     }
 
-    @Override
-    public String getRecId() {
-        return recId;
-    }
-
-    public void setRecId(String recId) {
-        this.recId = recId;
-    }
-
     public Instant getCreatedDate() {
         return createdDate;
     }
@@ -142,5 +136,13 @@ public class SensorRecObject extends RecObject {
 
     public void setRealEstate(String realEstate) {
         this.realEstate = realEstate;
+    }
+
+    public Tfm getTfm() {
+        return tfm;
+    }
+
+    public void setTfm(Tfm tfm) {
+        this.tfm = tfm;
     }
 }

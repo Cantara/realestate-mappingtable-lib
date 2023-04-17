@@ -1,6 +1,5 @@
 package no.cantara.realestate.mappingtable;
 
-import no.cantara.realestate.mappingtable.rec.RecObject;
 import no.cantara.realestate.mappingtable.rec.SensorRecObject;
 
 public class MappedSensorId {
@@ -17,7 +16,7 @@ public class MappedSensorId {
         return sensorId;
     }
 
-    public RecObject getRec() {
+    public SensorRecObject getRec() {
         return rec;
     }
 }

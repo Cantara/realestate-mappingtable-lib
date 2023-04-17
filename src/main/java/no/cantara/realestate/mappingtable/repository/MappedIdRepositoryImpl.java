@@ -7,6 +7,8 @@ import org.slf4j.Logger;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
+import java.util.stream.Collectors;
 
 import static org.slf4j.LoggerFactory.getLogger;
 
@@ -23,7 +25,15 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
 
     @Override
     public List<MappedSensorId> find(MappingKey mappingKey) {
-        return null;
+        List<MappedSensorId> matching = null;
+        if ( mappingKey != null && mappingKey.getTfm() != null) {
+            matching = sensorIds.stream()
+                    .filter(Objects::nonNull)
+                    .filter(r -> Objects.nonNull(r.getRec().getTfm()))
+                    .filter(r -> r.getRec().getTfm().equals(mappingKey.getTfm()))
+                    .collect(Collectors.toList());
+        }
+        return matching;
     }
 
     @Override

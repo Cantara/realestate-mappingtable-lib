@@ -2,7 +2,10 @@ package no.cantara.realestate.mappingtable.rec;
 
 public class RecObject {
 
-    private final String recId;
+    private String recId;
+
+    public RecObject() {
+    }
 
     public RecObject(String recId) {
         this.recId = recId;
@@ -10,5 +13,9 @@ public class RecObject {
 
     public String getRecId() {
         return recId;
+    }
+
+    public void setRecId(String recId) {
+        this.recId = recId;
     }
 }
