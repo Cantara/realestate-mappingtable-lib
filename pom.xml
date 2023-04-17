@@ -7,6 +7,12 @@
   <groupId>no.cantara.realestate</groupId>
   <artifactId>mappingtable-app</artifactId>
   <version>0.1.0-SNAPSHOT</version>
+  
+   <parent>
+        <groupId>no.cantara.emi</groupId>
+        <artifactId>parent</artifactId>
+        <version>8</version>
+    </parent>
 
   <url>https://github.com/Cantara/realestate-mappingtable-app</url>
 
