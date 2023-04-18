@@ -12,6 +12,7 @@ public class MetasysMappingKey implements MappingKey<MetasysSensorId> {
     }
 
     public MetasysSensorId getKey() {
+        //TODO need a different method to match MetasysSensorId
         return new MetasysSensorId(metasysDbId,metasysObjectReference);
     }
 }
