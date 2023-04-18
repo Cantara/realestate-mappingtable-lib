@@ -72,5 +72,9 @@ public class MultipleSourcesSensorRepositoryTest {
         assertEquals(1, matchingSersorIds.size());
         matchingSersorIds = repository.find(new EcoStruxureTrendMappingKey("TrendId1"));
         assertEquals(1, matchingSersorIds.size());
+        assertEquals("recId8", matchingSersorIds.get(0).getRec().getRecId());
+        assertEquals("TFM-8", matchingSersorIds.get(0).getRec().getTfm().getTfm());
+        matchingSersorIds = repository.find(new EcoStruxureTrendMappingKey("TrendId0"));
+        assertEquals(0, matchingSersorIds.size());
     }
 }
