@@ -26,11 +26,11 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
     @Override
     public List<MappedSensorId> find(MappingKey mappingKey) {
         List<MappedSensorId> matching = null;
-        if ( mappingKey != null && mappingKey.getTfm() != null) {
+        if ( mappingKey != null && mappingKey.getKey() != null) {
             matching = sensorIds.stream()
                     .filter(Objects::nonNull)
                     .filter(r -> Objects.nonNull(r.getRec().getTfm()))
-                    .filter(r -> r.getRec().getTfm().equals(mappingKey.getTfm()))
+                    .filter(r -> r.getRec().getTfm().equals(mappingKey.getKey()))
                     .collect(Collectors.toList());
         }
         return matching;
