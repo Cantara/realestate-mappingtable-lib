@@ -2,7 +2,9 @@ package no.cantara.realestate.mappingtable.ecostruxure;
 
 import no.cantara.realestate.mappingtable.MappingKey;
 
-public class EcoStruxureTrendMappingKey implements MappingKey<EcoStruxureTrendSensorId> {
+import java.util.Objects;
+
+public class EcoStruxureTrendMappingKey implements MappingKey<String> {
     private final String trendId;
 
     public EcoStruxureTrendMappingKey(String trendId) {
@@ -14,7 +16,20 @@ public class EcoStruxureTrendMappingKey implements MappingKey<EcoStruxureTrendSe
     }
 
     @Override
-    public EcoStruxureTrendSensorId getKey() {
-        return new EcoStruxureTrendSensorId(trendId);
+    public String getKey() {
+        return "EcoStruxure__" + trendId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        EcoStruxureTrendMappingKey that = (EcoStruxureTrendMappingKey) o;
+        return Objects.equals(getTrendId(), that.getTrendId());
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(getTrendId());
     }
 }

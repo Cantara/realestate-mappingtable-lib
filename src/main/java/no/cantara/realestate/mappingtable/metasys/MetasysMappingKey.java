@@ -2,17 +2,28 @@ package no.cantara.realestate.mappingtable.metasys;
 
 import no.cantara.realestate.mappingtable.MappingKey;
 
-public class MetasysMappingKey implements MappingKey<MetasysSensorId> {
-    private final String metasysDbId;
-    private final String metasysObjectReference;
+import java.util.Objects;
 
-    public MetasysMappingKey(String metasysDbId, String metasysObjectReference) {
+public class MetasysMappingKey implements MappingKey<String> {
+    private final String metasysDbId;
+    public MetasysMappingKey(String metasysDbId) {
         this.metasysDbId = metasysDbId;
-        this.metasysObjectReference = metasysObjectReference;
     }
 
-    public MetasysSensorId getKey() {
-        //TODO need a different method to match MetasysSensorId
-        return new MetasysSensorId(metasysDbId,metasysObjectReference);
+    public String getKey() {
+        return "Metasys__" + metasysDbId;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        MetasysMappingKey that = (MetasysMappingKey) o;
+        return Objects.equals(metasysDbId, that.metasysDbId);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(metasysDbId);
     }
 }

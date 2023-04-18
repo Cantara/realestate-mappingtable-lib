@@ -4,7 +4,6 @@ import no.cantara.realestate.mappingtable.MappedSensorId;
 import no.cantara.realestate.mappingtable.MappingKey;
 import no.cantara.realestate.mappingtable.MappingTableException;
 import no.cantara.realestate.mappingtable.bacnet.BacnetSensorId;
-import no.cantara.realestate.mappingtable.ecostruxure.EcoStruxureTrendSensorId;
 import no.cantara.realestate.mappingtable.metasys.MetasysSensorId;
 import no.cantara.realestate.mappingtable.rec.RecObject;
 import no.cantara.realestate.mappingtable.tfm.Tfm;
@@ -45,8 +44,12 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
                 throw new MappingTableException("Bacnet not implemented");
             } else if (mappingKey.getKey() instanceof MetasysSensorId) {
                 throw new MappingTableException("Metasys not implemented");
-            } else if (mappingKey.getKey() instanceof EcoStruxureTrendSensorId) {
-                throw new MappingTableException("EcoStruxure not implemented");
+            } else if (mappingKey.getKey() instanceof String) {
+                matching = sensorIds.stream()
+                        .filter(Objects::nonNull)
+                        .filter(r -> Objects.nonNull(r.getRec().getTfm()))
+                        .filter(r -> r.getSensorId().getMappingKey().equals(mappingKey))
+                        .collect(Collectors.toList());
             } else {
                 throw new MappingTableException("Unknown mappingKey type: " + mappingKey.getKey().getClass().getName());
             }
