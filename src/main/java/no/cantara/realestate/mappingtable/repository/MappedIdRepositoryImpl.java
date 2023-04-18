@@ -6,8 +6,10 @@ import no.cantara.realestate.mappingtable.rec.RecObject;
 import org.slf4j.Logger;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 import static org.slf4j.LoggerFactory.getLogger;
@@ -33,7 +35,18 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
                     .filter(r -> r.getRec().getTfm().equals(mappingKey.getKey()))
                     .collect(Collectors.toList());
         }
+        matching = filterByMappingKey(sensorIds, k -> k.getKey().equals(mappingKey.getKey()));
         return matching;
+    }
+
+    protected static <T> List<T> filterByMappingKey(Collection<T> collection, Predicate<MappingKey> predicate) {
+        List<T> result = new ArrayList<>();
+        for (T item : collection) {
+            if (predicate.test((MappingKey)item)) {
+                result.add(item);
+            }
+        }
+        return result;
     }
 
     @Override

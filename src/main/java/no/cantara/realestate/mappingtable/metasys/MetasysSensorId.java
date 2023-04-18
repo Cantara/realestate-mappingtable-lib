@@ -19,4 +19,5 @@ public class MetasysSensorId extends SensorId {
     public String getMetasysObjectReference() {
         return metasysObjectReference;
     }
+
 }

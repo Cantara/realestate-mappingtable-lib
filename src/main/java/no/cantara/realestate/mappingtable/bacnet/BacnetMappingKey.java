@@ -1,15 +1,11 @@
 package no.cantara.realestate.mappingtable.bacnet;
 
-import no.cantara.realestate.mappingtable.tfm.Tfm;
+import no.cantara.realestate.mappingtable.MappingKey;
 
-public class BacnetMappingKey {
-    private final Tfm tfm;
+public class BacnetMappingKey implements MappingKey<String> {
 
-    public BacnetMappingKey(Tfm tfm) {
-        this.tfm = tfm;
-    }
-
-    public Tfm getTfm() {
-        return tfm;
+    @Override
+    public String getKey() {
+        return null;
     }
 }
