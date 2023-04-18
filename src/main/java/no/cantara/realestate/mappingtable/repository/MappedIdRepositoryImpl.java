@@ -2,8 +2,13 @@ package no.cantara.realestate.mappingtable.repository;
 
 import no.cantara.realestate.mappingtable.MappedSensorId;
 import no.cantara.realestate.mappingtable.MappingKey;
+import no.cantara.realestate.mappingtable.bacnet.BacnetSensorId;
+import no.cantara.realestate.mappingtable.ecostruxure.EcoStruxureTrendSensorId;
+import no.cantara.realestate.mappingtable.metasys.MetasysSensorId;
 import no.cantara.realestate.mappingtable.rec.RecObject;
+import no.cantara.realestate.mappingtable.tfm.Tfm;
 import org.slf4j.Logger;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -29,13 +34,25 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
     public List<MappedSensorId> find(MappingKey mappingKey) {
         List<MappedSensorId> matching = null;
         if ( mappingKey != null && mappingKey.getKey() != null) {
-            matching = sensorIds.stream()
-                    .filter(Objects::nonNull)
-                    .filter(r -> Objects.nonNull(r.getRec().getTfm()))
-                    .filter(r -> r.getRec().getTfm().equals(mappingKey.getKey()))
-                    .collect(Collectors.toList());
+            if (mappingKey.getKey() instanceof Tfm) {
+                matching = sensorIds.stream()
+                        .filter(Objects::nonNull)
+                        .filter(r -> Objects.nonNull(r.getRec().getTfm()))
+                        .filter(r -> r.getRec().getTfm().equals(mappingKey.getKey()))
+                        .collect(Collectors.toList());
+                //#25 TODO implement generic for ingestion plugins
+            } else if (mappingKey.getKey() instanceof BacnetSensorId) {
+                throw new NotImplementedException();
+            } else if (mappingKey.getKey() instanceof MetasysSensorId) {
+                throw new NotImplementedException();
+            } else if (mappingKey.getKey() instanceof EcoStruxureTrendSensorId) {
+                throw new NotImplementedException();
+            } else {
+                throw new NotImplementedException();
+            }
         }
-        matching = filterByMappingKey(sensorIds, k -> k.getKey().equals(mappingKey.getKey()));
+//        TODO expect to use Predicates?
+//         matching = filterByMappingKey(sensorIds, k -> k.getKey().equals(mappingKey.getKey()));
         return matching;
     }
 

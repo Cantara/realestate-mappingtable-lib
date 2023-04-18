@@ -1,13 +1,17 @@
 package no.cantara.realestate.mappingtable.repository;
 
 import no.cantara.realestate.mappingtable.MappedSensorId;
+import no.cantara.realestate.mappingtable.bacnet.BacnetMappingKey;
 import no.cantara.realestate.mappingtable.bacnet.BacnetSensorId;
 import no.cantara.realestate.mappingtable.ecostruxure.EcoStruxureTrendSensorId;
 import no.cantara.realestate.mappingtable.metasys.MetasysSensorId;
 import no.cantara.realestate.mappingtable.rec.SensorRecObject;
 import no.cantara.realestate.mappingtable.tfm.Tfm;
+import no.cantara.realestate.mappingtable.tfm.TfmMappingKey;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
+
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
@@ -58,5 +62,8 @@ public class MultipleSourcesSensorRepositoryTest {
     @Test
     void findUsingMappingKey() {
         assertEquals(expectedCount, repository.size());
+        List<MappedSensorId> matchingSersorIds = repository.find(new TfmMappingKey(new Tfm("TFM-7")));
+        assertEquals(1, matchingSersorIds.size());
+        matchingSersorIds = repository.find(new BacnetMappingKey(1001, 345008, "DigitalInput"));
     }
 }

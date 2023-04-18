@@ -2,7 +2,7 @@ package no.cantara.realestate.mappingtable.ecostruxure;
 
 import no.cantara.realestate.mappingtable.MappingKey;
 
-public class EcoStruxureTrendMappingKey implements MappingKey<String> {
+public class EcoStruxureTrendMappingKey implements MappingKey<EcoStruxureTrendSensorId> {
     private final String trendId;
 
     public EcoStruxureTrendMappingKey(String trendId) {
@@ -14,7 +14,7 @@ public class EcoStruxureTrendMappingKey implements MappingKey<String> {
     }
 
     @Override
-    public String getKey() {
-        return trendId;
+    public EcoStruxureTrendSensorId getKey() {
+        return new EcoStruxureTrendSensorId(trendId);
     }
 }
