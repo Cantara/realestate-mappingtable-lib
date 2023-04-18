@@ -2,13 +2,13 @@ package no.cantara.realestate.mappingtable.repository;
 
 import no.cantara.realestate.mappingtable.MappedSensorId;
 import no.cantara.realestate.mappingtable.MappingKey;
+import no.cantara.realestate.mappingtable.MappingTableException;
 import no.cantara.realestate.mappingtable.bacnet.BacnetSensorId;
 import no.cantara.realestate.mappingtable.ecostruxure.EcoStruxureTrendSensorId;
 import no.cantara.realestate.mappingtable.metasys.MetasysSensorId;
 import no.cantara.realestate.mappingtable.rec.RecObject;
 import no.cantara.realestate.mappingtable.tfm.Tfm;
 import org.slf4j.Logger;
-import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -42,13 +42,13 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
                         .collect(Collectors.toList());
                 //#25 TODO implement generic for ingestion plugins
             } else if (mappingKey.getKey() instanceof BacnetSensorId) {
-                throw new NotImplementedException();
+                throw new MappingTableException("Bacnet not implemented");
             } else if (mappingKey.getKey() instanceof MetasysSensorId) {
-                throw new NotImplementedException();
+                throw new MappingTableException("Metasys not implemented");
             } else if (mappingKey.getKey() instanceof EcoStruxureTrendSensorId) {
-                throw new NotImplementedException();
+                throw new MappingTableException("EcoStruxure not implemented");
             } else {
-                throw new NotImplementedException();
+                throw new MappingTableException("Unknown mappingKey type: " + mappingKey.getKey().getClass().getName());
             }
         }
 //        TODO expect to use Predicates?
