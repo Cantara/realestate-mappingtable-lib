@@ -2,9 +2,6 @@ package no.cantara.realestate.mappingtable.repository;
 
 import no.cantara.realestate.mappingtable.MappedSensorId;
 import no.cantara.realestate.mappingtable.MappingKey;
-import no.cantara.realestate.mappingtable.MappingTableException;
-import no.cantara.realestate.mappingtable.bacnet.BacnetSensorId;
-import no.cantara.realestate.mappingtable.metasys.MetasysSensorId;
 import no.cantara.realestate.mappingtable.rec.RecObject;
 import no.cantara.realestate.mappingtable.tfm.Tfm;
 import org.slf4j.Logger;
@@ -39,19 +36,12 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
                         .filter(r -> Objects.nonNull(r.getRec().getTfm()))
                         .filter(r -> r.getRec().getTfm().equals(mappingKey.getKey()))
                         .collect(Collectors.toList());
-                //#25 TODO implement generic for ingestion plugins
-            } else if (mappingKey.getKey() instanceof BacnetSensorId) {
-                throw new MappingTableException("Bacnet not implemented");
-            } else if (mappingKey.getKey() instanceof MetasysSensorId) {
-                throw new MappingTableException("Metasys not implemented");
-            } else if (mappingKey.getKey() instanceof String) {
+            } else {
                 matching = sensorIds.stream()
                         .filter(Objects::nonNull)
                         .filter(r -> Objects.nonNull(r.getRec().getTfm()))
                         .filter(r -> r.getSensorId().getMappingKey().equals(mappingKey))
                         .collect(Collectors.toList());
-            } else {
-                throw new MappingTableException("Unknown mappingKey type: " + mappingKey.getKey().getClass().getName());
             }
         }
 //        TODO expect to use Predicates?
@@ -59,6 +49,7 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
         return matching;
     }
 
+    //TODO remove if not used by version 1.0
     protected static <T> List<T> filterByMappingKey(Collection<T> collection, Predicate<MappingKey> predicate) {
         List<T> result = new ArrayList<>();
         for (T item : collection) {
