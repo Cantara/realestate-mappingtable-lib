@@ -11,4 +11,6 @@ public abstract class SensorId {
     public void setId(String id) {
         this.id = id;
     }
+
+    public abstract MappingKey getMappingKey();
 }

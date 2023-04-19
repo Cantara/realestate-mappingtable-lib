@@ -20,4 +20,8 @@ public class MetasysSensorId extends SensorId {
         return metasysObjectReference;
     }
 
+    public MetasysMappingKey getMappingKey() {
+        return new MetasysMappingKey(metasysDbId);
+    }
+
 }

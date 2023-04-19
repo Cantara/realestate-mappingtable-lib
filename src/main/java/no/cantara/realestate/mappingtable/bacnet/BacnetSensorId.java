@@ -1,5 +1,6 @@
 package no.cantara.realestate.mappingtable.bacnet;
 
+import no.cantara.realestate.mappingtable.MappingKey;
 import no.cantara.realestate.mappingtable.SensorId;
 
 import java.util.Objects;
@@ -51,6 +52,11 @@ public class BacnetSensorId extends SensorId {
 
     public void setObjectName(String objectName) {
         ObjectName = objectName;
+    }
+
+    @Override
+    public MappingKey getMappingKey() {
+        return new BacnetMappingKey(deviceId,instanceId,ObjectType);
     }
 
     @Override

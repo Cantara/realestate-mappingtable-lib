@@ -31,4 +31,10 @@ public class EcoStruxureTrendSensorId extends SensorId {
     public void setObjectId(String objectId) {
         this.objectId = objectId;
     }
+
+    public EcoStruxureTrendMappingKey getMappingKey() {
+        return new EcoStruxureTrendMappingKey(trendId);
+    }
+
+
 }
