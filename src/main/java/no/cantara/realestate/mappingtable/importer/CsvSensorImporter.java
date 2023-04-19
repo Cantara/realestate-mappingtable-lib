@@ -1,10 +1,6 @@
 package no.cantara.realestate.mappingtable.importer;
 
-import no.cantara.config.ApplicationProperties;
 import no.cantara.realestate.mappingtable.SensorId;
-import no.cantara.realestate.mappingtable.csv.CsvCollection;
-import no.cantara.realestate.mappingtable.csv.CsvReader;
-import no.cantara.realestate.mappingtable.metasys.MetasysSensorId;
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -14,14 +10,12 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
-import static no.cantara.realestate.mappingtable.Main.getConfigValue;
 import static org.slf4j.LoggerFactory.getLogger;
 
-public class CsvSensorImporter implements SensorImporter {
+public abstract class CsvSensorImporter implements SensorImporter {
     private static final Logger log = getLogger(CsvSensorImporter.class);
     private final File importDirectory;
 
@@ -48,7 +42,7 @@ public class CsvSensorImporter implements SensorImporter {
         return sensorIds;
     }
 
-    public List<SensorId> importSensorsFromFile(Path filepath) {
+    public abstract List<SensorId> importSensorsFromFile(Path filepath); /* {
         List<SensorId> sensorIds = new ArrayList<>();
         CsvCollection collection = CsvReader.parse(filepath.toString());
         for (Map<String, String> record : collection.getRecords()) {
@@ -60,6 +54,8 @@ public class CsvSensorImporter implements SensorImporter {
         }
         return sensorIds;
     }
+    */
+
 
     boolean canRead(File importDirectory) {
         return importDirectory != null && importDirectory.isDirectory() && importDirectory.canRead();
@@ -92,22 +88,5 @@ public class CsvSensorImporter implements SensorImporter {
         return isEligible;
     }
 
-    public static void main(String[] args) {
-        ApplicationProperties.builder().defaults().buildAndSetStaticSingleton();
-        String importDirectoryPath = getConfigValue("CSV_IMPORT_DIRECTORY");
-        File importDirectory = new File(importDirectoryPath);
-        CsvSensorImporter csvImporter = new CsvSensorImporter(importDirectory);
-        List<Path> convertableFiles = csvImporter.findEligibleFiles("metasys");
-        for (Path convertableFile : convertableFiles) {
-            log.debug("Convert from csv 2 json: {}", convertableFile);
-            /*
-            JsonArray csvAsJson = convertFile(convertableFile);
-            String convertableFilePath = convertableFile.toString();
-            String writeToFile = convertableFilePath.replace("csv", "json");
-            writeJson2File(csvAsJson, writeToFile);
 
-             */
-        }
-        log.info("Wrote {} files to {}", convertableFiles.size(), importDirectoryPath);
-    }
 }

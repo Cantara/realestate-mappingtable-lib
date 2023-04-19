@@ -1,6 +1,7 @@
 package no.cantara.realestate.mappingtable.importer;
 
 import no.cantara.realestate.mappingtable.SensorId;
+import no.cantara.realestate.mappingtable.metasys.MetasysCsvSensorImporter;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -17,7 +18,7 @@ class CsvImporterTest {
     @BeforeEach
     void setUp() {
         File importDirectory = new File("src/test/resources");
-        csvImporter = new CsvSensorImporter(importDirectory);
+        csvImporter = new MetasysCsvSensorImporter(importDirectory);
     }
 
     @Test
