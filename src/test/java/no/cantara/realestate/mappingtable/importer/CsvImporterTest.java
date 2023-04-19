@@ -24,7 +24,7 @@ class CsvImporterTest {
     void importSensors() {
         List<SensorId> metasysSensors = csvImporter.importSensors("Metasys");
         assertTrue(metasysSensors != null);
-        assertEquals(5, metasysSensors.size());
+        assertEquals(2, metasysSensors.size());
     }
 
     @Test

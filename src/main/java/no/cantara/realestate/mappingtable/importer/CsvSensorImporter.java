@@ -54,7 +54,8 @@ public class CsvSensorImporter implements SensorImporter {
         for (Map<String, String> record : collection.getRecords()) {
             log.debug("ColumnNames: {}",collection.getColumnNames());
             //MetasysObjectReference,MetasysObjectId,RecId
-            SensorId sensorId = new MetasysSensorId(record.get("MetasysObjectReference"), record.get("MetasysObjectId"));
+            //tfm,metasysObjectReference,metasysDbId,name,description,realEstate,interval,building,floor,electricityZone,sensorType,measurementUnit
+            SensorId sensorId = new MetasysSensorId(record.get("metasysObjectReference"), record.get("MetasysObjectId"));
             sensorIds.add(sensorId);
         }
         return sensorIds;
