@@ -4,6 +4,7 @@ Mapping sensors from eg BACNet to Real Estate Core
 ## Ingestion Plugins
 Eg. Metasys, BACNet, Modbus, Schneider EcoStruxure, etc.
 
+### Implementation
 These plugins must implement the following interface:
 
 ```java
@@ -36,4 +37,27 @@ public class BacnetUniqueKey implements UniqueKey<String> {
     }
 }
 ```
+
+### Import data 
+You may import data from CSV file. The import must be defined as such:
+TODO: need clarification  
+```java
+public class BacnetImport implements Import<BacnetSensor> {
+    @Override
+    public List<BacnetSensor> importData() {
+        List<BacnetSensor> bacnetSensors = new ArrayList<>();
+        try (CSVReader reader = new CSVReader(new FileReader("bacnet.csv"))) {
+            String[] line;
+            while ((line = reader.readNext()) != null) {
+                bacnetSensors.add(new BacnetSensor(line[0], line[1], line[2], line[3]));
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return bacnetSensors;
+    }
+}
+```
+
+
 
