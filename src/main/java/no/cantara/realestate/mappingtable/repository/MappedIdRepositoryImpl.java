@@ -1,7 +1,7 @@
 package no.cantara.realestate.mappingtable.repository;
 
 import no.cantara.realestate.mappingtable.MappedSensorId;
-import no.cantara.realestate.mappingtable.MappingKey;
+import no.cantara.realestate.mappingtable.UniqueKey;
 import no.cantara.realestate.mappingtable.rec.RecObject;
 import no.cantara.realestate.mappingtable.tfm.Tfm;
 import org.slf4j.Logger;
@@ -27,7 +27,7 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
     }
 
     @Override
-    public List<MappedSensorId> find(MappingKey mappingKey) {
+    public List<MappedSensorId> find(UniqueKey mappingKey) {
         List<MappedSensorId> matching = null;
         if ( mappingKey != null && mappingKey.getKey() != null) {
             if (mappingKey.getKey() instanceof Tfm) {
@@ -50,10 +50,10 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
     }
 
     //TODO remove if not used by version 1.0
-    protected static <T> List<T> filterByMappingKey(Collection<T> collection, Predicate<MappingKey> predicate) {
+    protected static <T> List<T> filterByMappingKey(Collection<T> collection, Predicate<UniqueKey> predicate) {
         List<T> result = new ArrayList<>();
         for (T item : collection) {
-            if (predicate.test((MappingKey)item)) {
+            if (predicate.test((UniqueKey)item)) {
                 result.add(item);
             }
         }

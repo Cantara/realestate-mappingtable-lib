@@ -1,7 +1,7 @@
 package no.cantara.realestate.mappingtable.repository;
 
 import no.cantara.realestate.mappingtable.MappedSensorId;
-import no.cantara.realestate.mappingtable.MappingKey;
+import no.cantara.realestate.mappingtable.UniqueKey;
 import no.cantara.realestate.mappingtable.rec.RecObject;
 
 import java.util.List;
@@ -9,7 +9,7 @@ import java.util.List;
 public interface MappedIdRepository {
 
     void add(MappedSensorId sensorId);
-    List<MappedSensorId> find(MappingKey mappingKey);
+    List<MappedSensorId> find(UniqueKey mappingKey);
 
     long updateRec(RecObject recObject);
 

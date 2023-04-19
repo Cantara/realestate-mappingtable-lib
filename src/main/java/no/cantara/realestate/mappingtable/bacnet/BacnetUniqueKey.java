@@ -1,16 +1,16 @@
 package no.cantara.realestate.mappingtable.bacnet;
 
-import no.cantara.realestate.mappingtable.MappingKey;
+import no.cantara.realestate.mappingtable.UniqueKey;
 
 import java.util.Objects;
 
-public class BacnetMappingKey implements MappingKey<String> {
+public class BacnetUniqueKey implements UniqueKey<String> {
 
     private Integer deviceId;
     private Integer instanceId;
     private String objectType;
 
-    public BacnetMappingKey(Integer deviceId, Integer instanceId, String objectType) {
+    public BacnetUniqueKey(Integer deviceId, Integer instanceId, String objectType) {
         this.deviceId = deviceId;
         this.instanceId = instanceId;
         this.objectType = objectType;
@@ -25,7 +25,7 @@ public class BacnetMappingKey implements MappingKey<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        BacnetMappingKey that = (BacnetMappingKey) o;
+        BacnetUniqueKey that = (BacnetUniqueKey) o;
         return Objects.equals(deviceId, that.deviceId) && Objects.equals(instanceId, that.instanceId) && Objects.equals(objectType, that.objectType);
     }
 

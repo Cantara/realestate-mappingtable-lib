@@ -1,15 +1,15 @@
 package no.cantara.realestate.mappingtable.repository;
 
 import no.cantara.realestate.mappingtable.MappedSensorId;
-import no.cantara.realestate.mappingtable.bacnet.BacnetMappingKey;
 import no.cantara.realestate.mappingtable.bacnet.BacnetSensorId;
-import no.cantara.realestate.mappingtable.ecostruxure.EcoStruxureTrendMappingKey;
+import no.cantara.realestate.mappingtable.bacnet.BacnetUniqueKey;
 import no.cantara.realestate.mappingtable.ecostruxure.EcoStruxureTrendSensorId;
-import no.cantara.realestate.mappingtable.metasys.MetasysMappingKey;
+import no.cantara.realestate.mappingtable.ecostruxure.EcoStruxureTrendUniqueKey;
 import no.cantara.realestate.mappingtable.metasys.MetasysSensorId;
+import no.cantara.realestate.mappingtable.metasys.MetasysUniqueKey;
 import no.cantara.realestate.mappingtable.rec.SensorRecObject;
 import no.cantara.realestate.mappingtable.tfm.Tfm;
-import no.cantara.realestate.mappingtable.tfm.TfmMappingKey;
+import no.cantara.realestate.mappingtable.tfm.TfmUniqueKey;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -64,17 +64,17 @@ public class MultipleSourcesSensorRepositoryTest {
     @Test
     void findUsingMappingKey() {
         assertEquals(expectedCount, repository.size());
-        List<MappedSensorId> matchingSersorIds = repository.find(new TfmMappingKey(new Tfm("TFM-7")));
+        List<MappedSensorId> matchingSersorIds = repository.find(new TfmUniqueKey(new Tfm("TFM-7")));
         assertEquals(1, matchingSersorIds.size());
-        matchingSersorIds = repository.find(new MetasysMappingKey("dbId1"));
+        matchingSersorIds = repository.find(new MetasysUniqueKey("dbId1"));
         assertEquals(1, matchingSersorIds.size());
-        matchingSersorIds = repository.find(new BacnetMappingKey(1001, 345008, "DigitalInput"));
+        matchingSersorIds = repository.find(new BacnetUniqueKey(1001, 345008, "DigitalInput"));
         assertEquals(1, matchingSersorIds.size());
-        matchingSersorIds = repository.find(new EcoStruxureTrendMappingKey("TrendId1"));
+        matchingSersorIds = repository.find(new EcoStruxureTrendUniqueKey("TrendId1"));
         assertEquals(1, matchingSersorIds.size());
         assertEquals("recId8", matchingSersorIds.get(0).getRec().getRecId());
         assertEquals("TFM-8", matchingSersorIds.get(0).getRec().getTfm().getTfm());
-        matchingSersorIds = repository.find(new EcoStruxureTrendMappingKey("TrendId0"));
+        matchingSersorIds = repository.find(new EcoStruxureTrendUniqueKey("TrendId0"));
         assertEquals(0, matchingSersorIds.size());
     }
 }

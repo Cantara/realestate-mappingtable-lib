@@ -1,13 +1,13 @@
 package no.cantara.realestate.mappingtable.ecostruxure;
 
-import no.cantara.realestate.mappingtable.MappingKey;
+import no.cantara.realestate.mappingtable.UniqueKey;
 
 import java.util.Objects;
 
-public class EcoStruxureTrendMappingKey implements MappingKey<String> {
+public class EcoStruxureTrendUniqueKey implements UniqueKey<String> {
     private final String trendId;
 
-    public EcoStruxureTrendMappingKey(String trendId) {
+    public EcoStruxureTrendUniqueKey(String trendId) {
         this.trendId = trendId;
     }
 
@@ -24,7 +24,7 @@ public class EcoStruxureTrendMappingKey implements MappingKey<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        EcoStruxureTrendMappingKey that = (EcoStruxureTrendMappingKey) o;
+        EcoStruxureTrendUniqueKey that = (EcoStruxureTrendUniqueKey) o;
         return Objects.equals(getTrendId(), that.getTrendId());
     }
 

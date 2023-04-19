@@ -1,12 +1,12 @@
 package no.cantara.realestate.mappingtable.metasys;
 
-import no.cantara.realestate.mappingtable.MappingKey;
+import no.cantara.realestate.mappingtable.UniqueKey;
 
 import java.util.Objects;
 
-public class MetasysMappingKey implements MappingKey<String> {
+public class MetasysUniqueKey implements UniqueKey<String> {
     private final String metasysDbId;
-    public MetasysMappingKey(String metasysDbId) {
+    public MetasysUniqueKey(String metasysDbId) {
         this.metasysDbId = metasysDbId;
     }
 
@@ -18,7 +18,7 @@ public class MetasysMappingKey implements MappingKey<String> {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        MetasysMappingKey that = (MetasysMappingKey) o;
+        MetasysUniqueKey that = (MetasysUniqueKey) o;
         return Objects.equals(metasysDbId, that.metasysDbId);
     }
 

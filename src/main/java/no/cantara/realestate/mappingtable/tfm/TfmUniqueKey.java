@@ -1,11 +1,11 @@
 package no.cantara.realestate.mappingtable.tfm;
 
-import no.cantara.realestate.mappingtable.MappingKey;
+import no.cantara.realestate.mappingtable.UniqueKey;
 
-public class TfmMappingKey implements MappingKey<Tfm> {
+public class TfmUniqueKey implements UniqueKey<Tfm> {
     private final Tfm tfm;
 
-    public TfmMappingKey(Tfm tfm) {
+    public TfmUniqueKey(Tfm tfm) {
         this.tfm = tfm;
     }
 

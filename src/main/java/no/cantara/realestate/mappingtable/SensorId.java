@@ -12,5 +12,5 @@ public abstract class SensorId {
         this.id = id;
     }
 
-    public abstract MappingKey getMappingKey();
+    public abstract UniqueKey getMappingKey();
 }

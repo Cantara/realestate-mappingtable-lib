@@ -1,11 +1,11 @@
 package no.cantara.realestate.mappingtable.repository;
 
 import no.cantara.realestate.mappingtable.MappedSensorId;
-import no.cantara.realestate.mappingtable.MappingKey;
+import no.cantara.realestate.mappingtable.UniqueKey;
 import no.cantara.realestate.mappingtable.metasys.MetasysSensorId;
 import no.cantara.realestate.mappingtable.rec.SensorRecObject;
 import no.cantara.realestate.mappingtable.tfm.Tfm;
-import no.cantara.realestate.mappingtable.tfm.TfmMappingKey;
+import no.cantara.realestate.mappingtable.tfm.TfmUniqueKey;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -47,7 +47,7 @@ class MappedIdRepositoryImplTest {
         MappedSensorId tempSensorId = new MappedSensorId(tempSensor, tempRec);
         repository.add(tempSensorId);
         assertEquals(2, repository.size());
-        MappingKey tfmKey = new TfmMappingKey(tfm);
+        UniqueKey tfmKey = new TfmUniqueKey(tfm);
         List<MappedSensorId> matchingSersorIds = repository.find(tfmKey);
         assertNotNull(matchingSersorIds);
         assertEquals(1, matchingSersorIds.size());
