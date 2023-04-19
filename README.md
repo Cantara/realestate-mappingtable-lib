@@ -1,6 +1,11 @@
 # realestate-mappingtable-app
 Mapping sensors from eg BACNet to Real Estate Core
 
+Mapping from SensorId to Location and SensorType.
+* SensorId may be in multiple formats like BACNet, Metasys, Schneider EcoStruxure.
+* Location placing the sensor inside a RealEstate.
+* SensorType will create a uniform model of what a given sensor is observing.
+
 ## Ingestion Plugins
 Eg. Metasys, BACNet, Modbus, Schneider EcoStruxure, etc.
 
