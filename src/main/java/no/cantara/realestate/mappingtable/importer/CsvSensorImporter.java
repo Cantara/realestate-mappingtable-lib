@@ -1,5 +1,6 @@
 package no.cantara.realestate.mappingtable.importer;
 
+import no.cantara.realestate.mappingtable.MappedSensorId;
 import no.cantara.realestate.mappingtable.SensorId;
 import org.slf4j.Logger;
 
@@ -41,8 +42,22 @@ public abstract class CsvSensorImporter implements SensorImporter {
         }
         return sensorIds;
     }
+    public List<MappedSensorId> importMappedId(String sourceType) {
+        List<MappedSensorId> sensorIds = new ArrayList<>();
+        List<Path> eligibleFiles = findEligibleFiles(sourceType);
+        if (eligibleFiles != null) {
+            for (Path eligibleFile : eligibleFiles) {
+                List<MappedSensorId> importedMappedIds = importMappedIdFromFile(eligibleFile);
+                if (importedMappedIds != null) {
+                    sensorIds.addAll(importedMappedIds);
+                }
+            }
+        }
+        return sensorIds;
+    }
 
-    public abstract List<SensorId> importSensorsFromFile(Path filepath); /* {
+    public abstract List<SensorId> importSensorsFromFile(Path filepath);
+    public abstract List<MappedSensorId> importMappedIdFromFile(Path filepath);/* {
         List<SensorId> sensorIds = new ArrayList<>();
         CsvCollection collection = CsvReader.parse(filepath.toString());
         for (Map<String, String> record : collection.getRecords()) {
@@ -87,6 +102,7 @@ public abstract class CsvSensorImporter implements SensorImporter {
         }
         return isEligible;
     }
+
 
 
 }

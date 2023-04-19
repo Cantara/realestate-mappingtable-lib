@@ -1,10 +1,12 @@
 package no.cantara.realestate.mappingtable.metasys;
 
 import no.cantara.config.ApplicationProperties;
+import no.cantara.realestate.mappingtable.MappedSensorId;
 import no.cantara.realestate.mappingtable.SensorId;
 import no.cantara.realestate.mappingtable.csv.CsvCollection;
 import no.cantara.realestate.mappingtable.csv.CsvReader;
 import no.cantara.realestate.mappingtable.importer.CsvSensorImporter;
+import no.cantara.realestate.mappingtable.rec.SensorRecObject;
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -36,6 +38,21 @@ public class MetasysCsvSensorImporter extends CsvSensorImporter {
         return sensorIds;
     }
 
+    @Override
+    public List<MappedSensorId> importMappedIdFromFile(Path filepath) {
+        List<MappedSensorId> mappedSensorIds = new ArrayList<>();
+        CsvCollection collection = CsvReader.parse(filepath.toString());
+        for (Map<String, String> record : collection.getRecords()) {
+            log.debug("ColumnNames: {}",collection.getColumnNames());
+            //MetasysObjectReference,MetasysObjectId,RecId
+            //tfm,metasysObjectReference,metasysDbId,name,description,realEstate,interval,building,floor,electricityZone,sensorType,measurementUnit
+            SensorId sensorId = new MetasysSensorId(record.get("metasysObjectReference"), record.get("MetasysObjectId"));
+            SensorRecObject sensorRecObject = new SensorRecObject(record.get("RecId"));
+            MappedSensorId mappedSensorId = new MappedSensorId(sensorId, sensorRecObject);
+            mappedSensorIds.add(mappedSensorId);
+        }
+        return mappedSensorIds;
+    }
 
     public static void main(String[] args) {
         ApplicationProperties.builder().defaults().buildAndSetStaticSingleton();
