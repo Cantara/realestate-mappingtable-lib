@@ -2,6 +2,8 @@ package no.cantara.realestate.mappingtable.importer;
 
 import no.cantara.realestate.mappingtable.MappedSensorId;
 import no.cantara.realestate.mappingtable.SensorId;
+import no.cantara.realestate.mappingtable.rec.SensorRecObject;
+import no.cantara.realestate.mappingtable.tfm.Tfm;
 import org.slf4j.Logger;
 
 import java.io.File;
@@ -11,6 +13,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
@@ -54,6 +57,41 @@ public abstract class CsvSensorImporter implements SensorImporter {
             }
         }
         return sensorIds;
+    }
+    public SensorRecObject importSensorRecObject(List<String> columnNames, Map<String, String> record) {
+        SensorRecObject sensorRecObject = new SensorRecObject(record.get("RecId"));
+        if (columnNames.contains("Tfm")) {
+            Tfm tfm = new Tfm(record.get("Tfm"));
+            sensorRecObject.setTfm(tfm);
+        }
+        if (columnNames.contains("Name")) {
+            sensorRecObject.setName(record.get("Name"));
+        }
+        if (columnNames.contains("Description")) {
+            sensorRecObject.setDescription(record.get("Description"));
+        }
+        if (columnNames.contains("RealEstate")) {
+            sensorRecObject.setRealEstate(record.get("RealEstate"));
+        }
+        if (columnNames.contains("Building")) {
+            sensorRecObject.setBuilding(record.get("Building"));
+        }
+        if (columnNames.contains("Floor")) {
+            sensorRecObject.setFloor(record.get("Floor"));
+        }
+        if (columnNames.contains("ElectricityZone")) {
+            sensorRecObject.setElectricityZone(record.get("ElectricityZone"));
+        }
+        if (columnNames.contains("ClimateZone")) {
+            sensorRecObject.setClimateZone(record.get("ClimateZone"));
+        }
+        if (columnNames.contains("SensorType")) {
+            sensorRecObject.setSensorType(record.get("SensorType"));
+        }
+        if (columnNames.contains("MeasurementUnit")) {
+            sensorRecObject.setMeasurementUnit(record.get("MeasurementUnit"));
+        }
+        return sensorRecObject;
     }
 
     public abstract List<SensorId> importSensorsFromFile(Path filepath);

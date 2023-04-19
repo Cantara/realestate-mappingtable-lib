@@ -28,10 +28,9 @@ public class MetasysCsvSensorImporter extends CsvSensorImporter {
     public List<SensorId> importSensorsFromFile(Path filepath) {
         List<SensorId> sensorIds = new ArrayList<>();
         CsvCollection collection = CsvReader.parse(filepath.toString());
+        log.debug("ColumnNames: {}",collection.getColumnNames());
         for (Map<String, String> record : collection.getRecords()) {
-            log.debug("ColumnNames: {}",collection.getColumnNames());
-            //MetasysObjectReference,MetasysObjectId,RecId
-            //tfm,metasysObjectReference,metasysDbId,name,description,realEstate,interval,building,floor,electricityZone,sensorType,measurementUnit
+            //MetasysObjectReference,MetasysObjectId
             SensorId sensorId = new MetasysSensorId(record.get("metasysObjectReference"), record.get("MetasysObjectId"));
             sensorIds.add(sensorId);
         }
@@ -42,12 +41,14 @@ public class MetasysCsvSensorImporter extends CsvSensorImporter {
     public List<MappedSensorId> importMappedIdFromFile(Path filepath) {
         List<MappedSensorId> mappedSensorIds = new ArrayList<>();
         CsvCollection collection = CsvReader.parse(filepath.toString());
+        List<String> columnNames = collection.getColumnNames();
+        log.debug("ColumnNames: {}", columnNames);
         for (Map<String, String> record : collection.getRecords()) {
-            log.debug("ColumnNames: {}",collection.getColumnNames());
+
             //MetasysObjectReference,MetasysObjectId,RecId
             //tfm,metasysObjectReference,metasysDbId,name,description,realEstate,interval,building,floor,electricityZone,sensorType,measurementUnit
             SensorId sensorId = new MetasysSensorId(record.get("metasysObjectReference"), record.get("MetasysObjectId"));
-            SensorRecObject sensorRecObject = new SensorRecObject(record.get("RecId"));
+            SensorRecObject sensorRecObject = importSensorRecObject(columnNames, record);
             MappedSensorId mappedSensorId = new MappedSensorId(sensorId, sensorRecObject);
             mappedSensorIds.add(mappedSensorId);
         }
