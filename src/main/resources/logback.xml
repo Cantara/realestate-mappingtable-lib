@@ -30,7 +30,7 @@
     </appender>
 
 
-    <logger name="no.entra" level="trace" additivity="false">
+    <logger name="no.cantara" level="trace" additivity="false">
         <appender-ref ref="RF"/>
         <appender-ref ref="STDOUT" />
     </logger>
