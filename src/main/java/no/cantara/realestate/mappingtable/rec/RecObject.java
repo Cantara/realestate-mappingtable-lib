@@ -6,6 +6,8 @@ public class RecObject {
     private String realEstate;
     private String building;
     private String floor;
+
+    private String section;
     private String placementRoom;
     private String servesRoom;
     private String  climateZone;
@@ -60,6 +62,14 @@ public class RecObject {
         this.placementRoom = placementRoom;
     }
 
+    public String getSection() {
+        return section;
+    }
+
+    public void setSection(String section) {
+        this.section = section;
+    }
+
     public String getServesRoom() {
         return servesRoom;
     }
@@ -90,5 +100,38 @@ public class RecObject {
 
     public void setSensorType(String sensorType) {
         this.sensorType = sensorType;
+    }
+
+    /**
+     *
+     * @param propertyName
+     * @return
+     * @throws IllegalArgumentException if propertyName is not a valid property name
+     */
+    public String getProperty(String propertyName) {
+        switch (propertyName) {
+            case "recId":
+                return recId;
+            case "realEstate":
+                return realEstate;
+            case "building":
+                return building;
+            case "floor":
+                return floor;
+            case "placementRoom":
+                return placementRoom;
+            case "servesRoom":
+                return servesRoom;
+            case "climateZone":
+                return climateZone;
+            case "electricityZone":
+                return electricityZone;
+            case "section":
+                return section;
+            case "sensorType":
+                return sensorType;
+            default:
+                throw new IllegalArgumentException("Unknown property: " + propertyName);
+        }
     }
 }

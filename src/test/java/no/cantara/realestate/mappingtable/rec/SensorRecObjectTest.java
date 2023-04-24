@@ -25,4 +25,12 @@ class SensorRecObjectTest {
         assertFalse(tfm.getTfm().equals(recObject.getTfm()));
         assertEquals(tfm.getTfm(),recObject.getTfm().getTfm());
     }
+
+    @Test
+    void verifyGetProperty() {
+        recObject.setRealEstate("re1");
+        assertEquals("recid", recObject.getRecId());
+        assertEquals("recid", recObject.getProperty("recId"));
+        assertEquals("re1", recObject.getProperty("realEstate"));
+    }
 }

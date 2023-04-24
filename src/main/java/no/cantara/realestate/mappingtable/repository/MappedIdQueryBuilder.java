@@ -67,6 +67,12 @@ public class MappedIdQueryBuilder {
         return this;
     }
 
+    public MappedIdQueryBuilder recPropertyIsNull(String propertyName) {
+        predicates.add(mappedSensorId -> mappedSensorId.getRec() != null);
+        predicates.add(mappedSensorId -> mappedSensorId.getRec().getProperty(propertyName) == null || mappedSensorId.getRec().getProperty(propertyName).isEmpty());
+        return this;
+    }
+
     public MappedIdQueryBuilder missingSensorId() {
         predicates.add(mappedSensorId -> mappedSensorId.getSensorId() == null);
         return this;

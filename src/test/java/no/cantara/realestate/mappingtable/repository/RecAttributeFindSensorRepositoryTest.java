@@ -132,4 +132,13 @@ public class RecAttributeFindSensorRepositoryTest {
         query = new MappedIdQueryBuilder().missingSensorId().sensorType("CO2").build();
         assertEquals(1, repository.find(query).size());
     }
+
+    @Test
+    void whenRecPropertyIsNull() {
+        MappedIdQuery query = new MappedIdQueryBuilder().recPropertyIsNull("realEstate").build();
+        List<MappedSensorId> matchingSersorIds = repository.find(query);
+        assertEquals(0, matchingSersorIds.size());
+        query = new MappedIdQueryBuilder().recPropertyIsNull("section").build();
+        assertEquals(9, repository.find(query).size());
+    }
 }
