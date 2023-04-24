@@ -126,5 +126,10 @@ public class RecAttributeFindSensorRepositoryTest {
                 "msre3","building2","floor10","room1","Electricity","kwh");
         repository.add(new MappedSensorId(null, recObject));
         assertEquals(1, repository.find(query).size());
+        SensorRecObject co2Sensor  = buildRecObject("recId8", "TFM-8",
+                "msre3","building2","floor10","room1","CO2","ppm");
+        repository.add(new MappedSensorId(null, co2Sensor));
+        query = new MappedIdQueryBuilder().missingSensorId().sensorType("CO2").build();
+        assertEquals(1, repository.find(query).size());
     }
 }
