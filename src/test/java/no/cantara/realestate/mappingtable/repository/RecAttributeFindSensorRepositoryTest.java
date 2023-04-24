@@ -98,11 +98,22 @@ public class RecAttributeFindSensorRepositoryTest {
     }
 
     @Test
-    void findAllInRealEstate1() {
+    void findBasedOnRecObjectAttributes() {
         MappedIdQuery query = new MappedIdQueryBuilder().realEstate("msre1").build();
         List<MappedSensorId> matchingSersorIds = repository.find(query);
         assertEquals(4, matchingSersorIds.size());
         query = new MappedIdQueryBuilder().realEstate("msre1").placementRoom("room1").build();
         assertEquals(2, repository.find(query).size());
+    }
+
+    @Test
+    void findRecObjectAndSensorIdType() {
+        MappedIdQuery query = new MappedIdQueryBuilder().sensorIdClass(MetasysSensorId.class).build();
+        List<MappedSensorId> matchingSersorIds = repository.find(query);
+        assertEquals(4, matchingSersorIds.size());
+        query = new MappedIdQueryBuilder().realEstate("msre1").placementRoom("room1").build();
+        assertEquals(2, repository.find(query).size());
+        query = new MappedIdQueryBuilder().sensorIdClass(EcoStruxureTrendSensorId.class).build();
+        assertEquals(1, repository.find(query).size());
     }
 }

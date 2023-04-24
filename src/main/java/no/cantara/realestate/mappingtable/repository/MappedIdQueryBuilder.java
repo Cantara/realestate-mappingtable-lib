@@ -59,4 +59,11 @@ public class MappedIdQueryBuilder {
         return query;
     }
 
+    public MappedIdQueryBuilder sensorIdClass(Class sensorIdClass) {
+        if (sensorIdClass != null) {
+            predicates.add(mappedSensorId -> mappedSensorId.getSensorId() != null);
+            predicates.add(mappedSensorId -> mappedSensorId.getSensorId().getClass().equals(sensorIdClass));
+        }
+        return this;
+    }
 }
