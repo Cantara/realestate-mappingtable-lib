@@ -3,6 +3,7 @@ package no.cantara.realestate.mappingtable.repository;
 import no.cantara.realestate.mappingtable.MappedSensorId;
 import no.cantara.realestate.mappingtable.UniqueKey;
 import no.cantara.realestate.mappingtable.rec.RecObject;
+import no.cantara.realestate.mappingtable.rec.RecQuery;
 import no.cantara.realestate.mappingtable.tfm.Tfm;
 import org.slf4j.Logger;
 
@@ -49,6 +50,18 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
         return matching;
     }
 
+    public List<MappedSensorId> find(MappedIdQuery mappedIdQuery) {
+        Predicate<MappedSensorId> predicate = mappedIdQuery.getPredicate();
+        List<MappedSensorId> matching = sensorIds.stream()
+                .filter(predicate)
+                .collect(Collectors.toList());
+        return matching;
+    }
+
+    public List<RecObject> missingSensorIds(RecQuery recQuery) {
+        return null;
+    }
+
     //TODO remove if not used by version 1.0
     protected static <T> List<T> filterByMappingKey(Collection<T> collection, Predicate<UniqueKey> predicate) {
         List<T> result = new ArrayList<>();
@@ -59,6 +72,9 @@ public class MappedIdRepositoryImpl implements MappedIdRepository {
         }
         return result;
     }
+
+
+
 
     @Override
     public long updateRec(RecObject recObject) {

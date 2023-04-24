@@ -11,6 +11,8 @@ public interface MappedIdRepository {
     void add(MappedSensorId sensorId);
     List<MappedSensorId> find(UniqueKey mappingKey);
 
+    List<MappedSensorId> find(MappedIdQuery mappedIdQuery);
+
     long updateRec(RecObject recObject);
 
     long size();
