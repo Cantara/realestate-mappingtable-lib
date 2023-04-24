@@ -116,4 +116,15 @@ public class RecAttributeFindSensorRepositoryTest {
         query = new MappedIdQueryBuilder().sensorIdClass(EcoStruxureTrendSensorId.class).build();
         assertEquals(1, repository.find(query).size());
     }
+
+    @Test
+    void findMissingSensorId() {
+        MappedIdQuery query = new MappedIdQueryBuilder().missingSensorId().build();
+        List<MappedSensorId> matchingSersorIds = repository.find(query);
+        assertEquals(0, matchingSersorIds.size());
+        SensorRecObject recObject = buildRecObject("recId8", "TFM-8",
+                "msre3","building2","floor10","room1","Electricity","kwh");
+        repository.add(new MappedSensorId(null, recObject));
+        assertEquals(1, repository.find(query).size());
+    }
 }

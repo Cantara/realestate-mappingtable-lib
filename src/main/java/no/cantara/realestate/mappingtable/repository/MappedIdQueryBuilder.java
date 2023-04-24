@@ -66,4 +66,9 @@ public class MappedIdQueryBuilder {
         }
         return this;
     }
+
+    public MappedIdQueryBuilder missingSensorId() {
+        predicates.add(mappedSensorId -> mappedSensorId.getSensorId() == null);
+        return this;
+    }
 }
