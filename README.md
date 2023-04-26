@@ -1,4 +1,4 @@
-# realestate-mappingtable-app
+# realestate-mappingtable-lib
 Mapping sensors from eg BACNet to Real Estate Core
 
 Mapping from SensorId to Location and SensorType.
