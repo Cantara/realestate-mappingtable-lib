@@ -5,9 +5,9 @@
   <modelVersion>4.0.0</modelVersion>
 
   <groupId>no.cantara.realestate</groupId>
-  <artifactId>mappingtable-app</artifactId>
+  <artifactId>mappingtable-lib</artifactId>
   <version>0.1.0-SNAPSHOT</version>
-  <url>https://github.com/Cantara/realestate-mappingtable-app</url>
+  <url>https://github.com/Cantara/realestate-mappingtable-lib</url>
 
   <parent>
         <groupId>no.cantara.emi</groupId>
@@ -18,9 +18,9 @@
   
   
   <scm>
-        <developerConnection>scm:git:ssh://git@github.com/cantara/realestate-mappingtable-app.git</developerConnection>
-        <connection>scm:git:https://github.com/cantara/realestate-mappingtable-app.git</connection>
-        <url>https://github.com/cantara/realestate-mappingtable-app</url>
+        <developerConnection>scm:git:ssh://git@github.com/cantara/realestate-mappingtable-lib.git</developerConnection>
+        <connection>scm:git:https://github.com/cantara/realestate-mappingtable-lib.git</connection>
+        <url>https://github.com/cantara/realestate-mappingtable-lib</url>
         <tag>HEAD</tag>
   </scm>
   
@@ -34,8 +34,6 @@
       <logback.version>1.2.6</logback.version>
       <slf4j.version>2.0.7</slf4j.version>
       <logback.version>1.4.7</logback.version>
-
-
   </properties>
 
   <dependencies>
@@ -45,19 +43,6 @@
       <artifactId>property-config</artifactId>
       <version>0.8.17</version>
     </dependency>
-
-    <dependency>
-      <groupId>io.helidon.microprofile.bundles</groupId>
-      <artifactId>helidon-microprofile</artifactId>
-      <version>3.2.0</version>
-      <exclusions>
-        <exclusion>
-          <groupId>org.slf4j</groupId>
-          <artifactId>slf4j-jdk14</artifactId>
-        </exclusion>
-      </exclusions>
-    </dependency>
-
     <dependency>
       <groupId>org.yaml</groupId>
       <artifactId>snakeyaml</artifactId>
@@ -68,7 +53,6 @@
       <artifactId>netty-codec</artifactId>
       <version>4.1.92.Final</version>
     </dependency>
-
 
     <dependency>
       <groupId>org.apache.commons</groupId>
@@ -137,8 +121,6 @@
       <version>${logback.version}</version>
     </dependency>
 
-
-
     <!-- Test -->
     <dependency>
       <groupId>org.junit.jupiter</groupId>
@@ -170,11 +152,7 @@
       <version>5.15.0</version>
       <scope>test</scope>
     </dependency>
-
-
   </dependencies>
-
-
   <build>
     <plugins>
       <plugin>
@@ -308,6 +286,5 @@
       <url>https://mvnrepo.cantara.no/content/repositories/snapshots/</url>
     </repository>
   </repositories>
-
 
 </project>
