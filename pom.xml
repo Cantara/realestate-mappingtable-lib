@@ -272,7 +272,6 @@
     </plugins>
   </build>
 
-
   <repositories>
     <!-- Needed for property-config  -->
     <repository>
