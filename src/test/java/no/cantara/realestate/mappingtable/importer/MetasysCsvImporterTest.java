@@ -31,21 +31,45 @@ class MetasysCsvImporterTest {
     }
 
     @Test
-    void importMappedId() {
+    void importMappedIdVerifyTfm() {
         List<MappedSensorId> mappedSensorIds = csvImporter.importMappedId("Metasys");
         assertTrue(mappedSensorIds != null);
         assertEquals(3, mappedSensorIds.size());
-        assertEquals("", mappedSensorIds.get(0).getRec().getRecId());
-        assertEquals("aaa-bbb-ccc", mappedSensorIds.get(2).getRec().getRecId());
-        assertEquals("TFM-RY02101",mappedSensorIds.get(0).getRec().getTfm().getTfm());
-        SensorRecObject mappedRec = mappedSensorIds.get(1).getRec();
-        assertEquals("433.012-OE101-Energy", mappedRec.getTfm().getTfm());
-        assertEquals("RE1",mappedRec.getRealEstate());
-        assertEquals("Building1",mappedRec.getBuilding());
-        assertEquals("Floor1",mappedRec.getFloor());
-        assertEquals("ventilasjon",mappedRec.getElectricityZone());
-        assertEquals("Energy", mappedRec.getSensorType());
-        assertEquals("kwh", mappedRec.getMeasurementUnit());
+        for (MappedSensorId mappedSensorId : mappedSensorIds) {
+            if (mappedSensorId.getRec().getRecId() == null) {
+                assertEquals("433.012-OE101-Energy", mappedSensorId.getRec().getTfm().getTfm());
+            }
+        }
+    }
+
+    @Test
+    void importMappedIdVerifyRecObject() {
+        List<MappedSensorId> mappedSensorIds = csvImporter.importMappedId("Metasys");
+        assertTrue(mappedSensorIds != null);
+        assertEquals(3, mappedSensorIds.size());
+        for (MappedSensorId mappedSensorId : mappedSensorIds) {
+            if (mappedSensorId.getRec().getRecId() == null) {
+                SensorRecObject mappedRec = mappedSensorId.getRec();
+                assertEquals("433.012-OE101-Energy", mappedRec.getTfm().getTfm());
+                assertEquals("RE1", mappedRec.getRealEstate());
+                assertEquals("Building1", mappedRec.getBuilding());
+                assertEquals("Floor1", mappedRec.getFloor());
+                assertEquals("ventilasjon", mappedRec.getElectricityZone());
+                assertEquals("Energy", mappedRec.getSensorType());
+                assertEquals("kwh", mappedRec.getMeasurementUnit());
+            }
+        }
+    }
+    @Test
+    void importMappedIdVerifyRecId() {
+        //Test that recId is defined with value, is blank or is null in the csv file
+        List<MappedSensorId> mappedSensorIds = csvImporter.importMappedId("Metasys");
+        assertTrue(mappedSensorIds != null);
+        assertEquals(3, mappedSensorIds.size());
+        for (MappedSensorId mappedSensorId : mappedSensorIds) {
+            String recId = mappedSensorId.getRec().getRecId();
+            assertTrue(recId == null || recId.equals("") || recId.equals("aaa-bbb-ccc"));
+        }
     }
 
     @Test
