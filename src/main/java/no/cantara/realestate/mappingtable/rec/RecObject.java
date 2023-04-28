@@ -134,4 +134,20 @@ public class RecObject {
                 throw new IllegalArgumentException("Unknown property: " + propertyName);
         }
     }
+
+    @Override
+    public String toString() {
+        return "RecObject{" +
+                "recId='" + recId + '\'' +
+                ", realEstate='" + realEstate + '\'' +
+                ", building='" + building + '\'' +
+                ", floor='" + floor + '\'' +
+                ", section='" + section + '\'' +
+                ", placementRoom='" + placementRoom + '\'' +
+                ", servesRoom='" + servesRoom + '\'' +
+                ", climateZone='" + climateZone + '\'' +
+                ", electricityZone='" + electricityZone + '\'' +
+                ", sensorType='" + sensorType + '\'' +
+                '}';
+    }
 }

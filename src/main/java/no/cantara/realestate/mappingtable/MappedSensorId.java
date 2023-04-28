@@ -19,4 +19,12 @@ public class MappedSensorId {
     public SensorRecObject getRec() {
         return rec;
     }
+
+    @Override
+    public String toString() {
+        return "MappedSensorId{" +
+                "sensorId=" + sensorId +
+                ", rec=" + rec +
+                '}';
+    }
 }

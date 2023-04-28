@@ -13,4 +13,11 @@ public abstract class SensorId {
     }
 
     public abstract UniqueKey getMappingKey();
+
+    @Override
+    public String toString() {
+        return "SensorId{" +
+                "id='" + id + '\'' +
+                '}';
+    }
 }

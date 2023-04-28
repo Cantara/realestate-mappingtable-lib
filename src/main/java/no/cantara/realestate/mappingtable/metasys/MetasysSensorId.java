@@ -24,4 +24,11 @@ public class MetasysSensorId extends SensorId {
         return new MetasysUniqueKey(metasysDbId);
     }
 
+    @Override
+    public String toString() {
+        return "MetasysSensorId{" +
+                "metasysDbId='" + metasysDbId + '\'' +
+                ", metasysObjectReference='" + metasysObjectReference + '\'' +
+                "} " + super.toString();
+    }
 }
