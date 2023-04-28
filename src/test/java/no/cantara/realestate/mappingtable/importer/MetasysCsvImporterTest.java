@@ -3,6 +3,7 @@ package no.cantara.realestate.mappingtable.importer;
 import no.cantara.realestate.mappingtable.MappedSensorId;
 import no.cantara.realestate.mappingtable.SensorId;
 import no.cantara.realestate.mappingtable.metasys.MetasysCsvSensorImporter;
+import no.cantara.realestate.mappingtable.metasys.MetasysSensorId;
 import no.cantara.realestate.mappingtable.rec.SensorRecObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -69,6 +70,18 @@ class MetasysCsvImporterTest {
         for (MappedSensorId mappedSensorId : mappedSensorIds) {
             String recId = mappedSensorId.getRec().getRecId();
             assertTrue(recId == null || recId.equals("") || recId.equals("aaa-bbb-ccc"));
+        }
+    }
+
+    void importVerifyMetasysProperties() {
+        List<MappedSensorId> mappedSensorIds = csvImporter.importMappedId("Metasys");
+        assertTrue(mappedSensorIds != null);
+        assertEquals(3, mappedSensorIds.size());
+        for (MappedSensorId mappedSensorId : mappedSensorIds) {
+            MetasysSensorId sensorId = (MetasysSensorId) mappedSensorId.getSensorId();
+            String metasysDbId = sensorId.getMetasysDbId();
+            assertTrue(metasysDbId == null && !metasysDbId.isEmpty());
+            assertTrue(sensorId.getMetasysObjectReference() != null && !sensorId.getMetasysObjectReference().isEmpty());
         }
     }
 
