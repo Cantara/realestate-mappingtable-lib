@@ -47,7 +47,7 @@ public class MetasysCsvSensorImporter extends CsvSensorImporter {
 
             //MetasysObjectReference,MetasysObjectId,RecId
             //tfm,metasysObjectReference,metasysDbId,name,description,realEstate,interval,building,floor,electricityZone,sensorType,measurementUnit
-            SensorId sensorId = new MetasysSensorId(record.get("metasysObjectReference"), record.get("MetasysObjectId"));
+            SensorId sensorId = new MetasysSensorId( record.get("MetasysObjectId"),record.get("MetasysObjectReference"));
             SensorRecObject sensorRecObject = importSensorRecObject(columnNames, record);
             MappedSensorId mappedSensorId = new MappedSensorId(sensorId, sensorRecObject);
             mappedSensorIds.add(mappedSensorId);

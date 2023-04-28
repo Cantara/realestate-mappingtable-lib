@@ -9,6 +9,7 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import java.io.File;
+import java.nio.file.Paths;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
@@ -17,10 +18,11 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 class MetasysCsvImporterTest {
 
     private CsvSensorImporter csvImporter;
+    private File importDirectory;
 
     @BeforeEach
     void setUp() {
-        File importDirectory = new File("src/test/resources");
+        importDirectory = new File("src/test/resources");
         csvImporter = new MetasysCsvSensorImporter(importDirectory);
     }
 
@@ -72,6 +74,19 @@ class MetasysCsvImporterTest {
             assertTrue(recId == null || recId.equals("") || recId.equals("aaa-bbb-ccc"));
         }
     }
+
+    @Test
+    void importMappedIdFromFile() {
+        List<MappedSensorId> mappedSensorIds = csvImporter.importMappedIdFromFile(Paths.get("src/test/resources/MetasysTfmRec.csv"));
+        assertTrue(mappedSensorIds != null);
+        assertEquals(1, mappedSensorIds.size());
+
+        MetasysSensorId sensorId = (MetasysSensorId) mappedSensorIds.get(0).getSensorId();
+        assertEquals("208540b1-ab8a-566a-8a41-8b4cee515baf", sensorId.getMetasysDbId());
+        assertEquals("METASYS1:RE1-NAE7/BACnet IP1.Modbus 433U11.Analog Inputs.AI-93", sensorId.getMetasysObjectReference());
+
+    }
+    //importMappedIdFromFile
 
     void importVerifyMetasysProperties() {
         List<MappedSensorId> mappedSensorIds = csvImporter.importMappedId("Metasys");
