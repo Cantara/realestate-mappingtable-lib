@@ -31,7 +31,7 @@ public class MetasysCsvSensorImporter extends CsvSensorImporter {
         log.debug("ColumnNames: {}",collection.getColumnNames());
         for (Map<String, String> record : collection.getRecords()) {
             //MetasysObjectReference,MetasysObjectId
-            SensorId sensorId = new MetasysSensorId(record.get("metasysObjectReference"), record.get("MetasysObjectId"));
+            SensorId sensorId = new MetasysSensorId( record.get("MetasysObjectId"),record.get("MetasysObjectReference"));
             sensorIds.add(sensorId);
         }
         return sensorIds;
