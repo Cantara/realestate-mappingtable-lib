@@ -62,8 +62,8 @@ public class RecAttributeFindSensorRepositoryTest {
         return new MappedSensorId(sensorId, recObject);
     }
 
-    MappedSensorId buildMetasysMappedId(String metasysDbId, String metasysObjectReference, String recId, String tfm, String realEstate, String building, String floor, String placementRoom, String sensorType, String measurementUnit) {
-        MetasysSensorId sensorId = new MetasysSensorId(metasysDbId, metasysObjectReference);
+    MappedSensorId buildMetasysMappedId(String metasysObjectId, String metasysObjectReference, String recId, String tfm, String realEstate, String building, String floor, String placementRoom, String sensorType, String measurementUnit) {
+        MetasysSensorId sensorId = new MetasysSensorId(metasysObjectId, metasysObjectReference);
         SensorRecObject recObject = buildRecObject(recId, tfm, realEstate, building, floor, placementRoom, sensorType, measurementUnit);
         return new MappedSensorId(sensorId, recObject);
     }

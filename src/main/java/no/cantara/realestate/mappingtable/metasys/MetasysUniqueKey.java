@@ -5,13 +5,13 @@ import no.cantara.realestate.mappingtable.UniqueKey;
 import java.util.Objects;
 
 public class MetasysUniqueKey implements UniqueKey<String> {
-    private final String metasysDbId;
-    public MetasysUniqueKey(String metasysDbId) {
-        this.metasysDbId = metasysDbId;
+    private final String metasysObjectId;
+    public MetasysUniqueKey(String metasysObjectId) {
+        this.metasysObjectId = metasysObjectId;
     }
 
     public String getKey() {
-        return "Metasys__" + metasysDbId;
+        return "Metasys__" + metasysObjectId;
     }
 
     @Override
@@ -19,11 +19,11 @@ public class MetasysUniqueKey implements UniqueKey<String> {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         MetasysUniqueKey that = (MetasysUniqueKey) o;
-        return Objects.equals(metasysDbId, that.metasysDbId);
+        return Objects.equals(metasysObjectId, that.metasysObjectId);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(metasysDbId);
+        return Objects.hash(metasysObjectId);
     }
 }

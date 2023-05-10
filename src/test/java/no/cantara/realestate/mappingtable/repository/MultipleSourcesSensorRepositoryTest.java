@@ -54,8 +54,8 @@ public class MultipleSourcesSensorRepositoryTest {
         return new MappedSensorId(sensorId, recObject);
     }
 
-    MappedSensorId buildMetasysMappedId(String metasysDbId, String metasysObjectReference, String recId, String tfm) {
-        MetasysSensorId sensorId = new MetasysSensorId(metasysDbId, metasysObjectReference);
+    MappedSensorId buildMetasysMappedId(String metasysObjectId, String metasysObjectReference, String recId, String tfm) {
+        MetasysSensorId sensorId = new MetasysSensorId(metasysObjectId, metasysObjectReference);
         SensorRecObject recObject = new SensorRecObject(recId);
         recObject.setTfm(new Tfm(tfm));
         return new MappedSensorId(sensorId, recObject);

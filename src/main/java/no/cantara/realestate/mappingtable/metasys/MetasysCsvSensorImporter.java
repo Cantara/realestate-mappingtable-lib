@@ -46,7 +46,7 @@ public class MetasysCsvSensorImporter extends CsvSensorImporter {
         for (Map<String, String> record : collection.getRecords()) {
 
             //MetasysObjectReference,MetasysObjectId,RecId
-            //tfm,metasysObjectReference,metasysDbId,name,description,realEstate,interval,building,floor,electricityZone,sensorType,measurementUnit
+            //tfm,metasysObjectReference,metasysObjectId,name,description,realEstate,interval,building,floor,electricityZone,sensorType,measurementUnit
             SensorId sensorId = new MetasysSensorId( record.get("MetasysObjectId"),record.get("MetasysObjectReference"));
             SensorRecObject sensorRecObject = importSensorRecObject(columnNames, record);
             MappedSensorId mappedSensorId = new MappedSensorId(sensorId, sensorRecObject);
@@ -62,7 +62,7 @@ public class MetasysCsvSensorImporter extends CsvSensorImporter {
         MetasysCsvSensorImporter csvImporter = new MetasysCsvSensorImporter(importDirectory);
         List<Path> convertableFiles = csvImporter.findEligibleFiles("metasys");
         for (Path convertableFile : convertableFiles) {
-            log.debug("Convert from csv 2 json: {}", convertableFile);
+            log.debug("Import from csv 2: {}", convertableFile);
             /*
             JsonArray csvAsJson = convertFile(convertableFile);
             String convertableFilePath = convertableFile.toString();
@@ -71,6 +71,6 @@ public class MetasysCsvSensorImporter extends CsvSensorImporter {
 
              */
         }
-        log.info("Wrote {} files to {}", convertableFiles.size(), importDirectoryPath);
+        log.info("Imported {} files to {}", convertableFiles.size(), importDirectoryPath);
     }
 }

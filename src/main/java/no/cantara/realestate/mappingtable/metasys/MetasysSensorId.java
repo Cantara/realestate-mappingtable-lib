@@ -4,16 +4,16 @@ import no.cantara.realestate.mappingtable.SensorId;
 
 public class MetasysSensorId extends SensorId {
 
-    private final String metasysDbId;
+    private final String metasysObjectId;
     private final String metasysObjectReference;
 
-    public MetasysSensorId(String metasysDbId, String metasysObjectReference) {
-        this.metasysDbId = metasysDbId;
+    public MetasysSensorId(String metasysObjectId, String metasysObjectReference) {
+        this.metasysObjectId = metasysObjectId;
         this.metasysObjectReference = metasysObjectReference;
     }
 
-    public String getMetasysDbId() {
-        return metasysDbId;
+    public String getMetasysObjectId() {
+        return metasysObjectId;
     }
 
     public String getMetasysObjectReference() {
@@ -21,13 +21,13 @@ public class MetasysSensorId extends SensorId {
     }
 
     public MetasysUniqueKey getMappingKey() {
-        return new MetasysUniqueKey(metasysDbId);
+        return new MetasysUniqueKey(metasysObjectId);
     }
 
     @Override
     public String toString() {
         return "MetasysSensorId{" +
-                "metasysDbId='" + metasysDbId + '\'' +
+                "metasysObjectId='" + metasysObjectId + '\'' +
                 ", metasysObjectReference='" + metasysObjectReference + '\'' +
                 "} " + super.toString();
     }

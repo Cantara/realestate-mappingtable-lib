@@ -4,7 +4,7 @@ public final class SensorRecBuilder {
 
     private String realEstate;
     private String tfm;
-    private String metasysDbId;
+    private String metasysObjectId;
     private String metasysObjectReference;
     private String metasysNae;
     private String schneiderTrendId;
@@ -47,8 +47,8 @@ public final class SensorRecBuilder {
         return this;
     }
 
-    public SensorRecBuilder withMetasysDbId(String metasysDbId) {
-        this.metasysDbId = metasysDbId;
+    public SensorRecBuilder withmetasysObjectId(String metasysObjectId) {
+        this.metasysObjectId = metasysObjectId;
         return this;
     }
 

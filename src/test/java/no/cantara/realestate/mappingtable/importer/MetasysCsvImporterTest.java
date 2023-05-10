@@ -82,7 +82,7 @@ class MetasysCsvImporterTest {
         assertEquals(1, mappedSensorIds.size());
 
         MetasysSensorId sensorId = (MetasysSensorId) mappedSensorIds.get(0).getSensorId();
-        assertEquals("208540b1-ab8a-566a-8a41-8b4cee515baf", sensorId.getMetasysDbId());
+        assertEquals("208540b1-ab8a-566a-8a41-8b4cee515baf", sensorId.getMetasysObjectId());
         assertEquals("METASYS1:RE1-NAE7/BACnet IP1.Modbus 433U11.Analog Inputs.AI-93", sensorId.getMetasysObjectReference());
 
     }
@@ -92,21 +92,21 @@ class MetasysCsvImporterTest {
         List<MappedSensorId> mappedSensorIds = csvImporter.importMappedId("Metasys");
         assertTrue(mappedSensorIds != null);
         assertEquals(3, mappedSensorIds.size());
-        boolean metasysDbIdFound = false;
+        boolean metasysObjectIdFound = false;
         boolean metasysObjectReferenceFound = false;
         for (MappedSensorId mappedSensorId : mappedSensorIds) {
             MetasysSensorId sensorId = (MetasysSensorId) mappedSensorId.getSensorId();
-            String metasysDbId = sensorId.getMetasysDbId();
-            assertTrue(metasysDbId == null && !metasysDbId.isEmpty());
-            if (metasysDbId.equals("208540b1-ab8a-566a-8a41-8b4cee515baf")){
-                metasysDbIdFound = true;
+            String metasysObjectId = sensorId.getMetasysObjectId();
+            assertTrue(metasysObjectId == null && !metasysObjectId.isEmpty());
+            if (metasysObjectId.equals("208540b1-ab8a-566a-8a41-8b4cee515baf")){
+                metasysObjectIdFound = true;
             }
             assertTrue(sensorId.getMetasysObjectReference() != null && !sensorId.getMetasysObjectReference().isEmpty());
             if (sensorId.getMetasysObjectReference().equals("METASYS1:RE1-NAE7/BACnet IP1.Modbus 433U11.Analog Inputs.AI-93")){
                 metasysObjectReferenceFound = true;
             }
         }
-        assertTrue( metasysDbIdFound,"MetasysDbId not found: 208540b1-ab8a-566a-8a41-8b4cee515baf");
+        assertTrue( metasysObjectIdFound,"MetasysObjectId not found: 208540b1-ab8a-566a-8a41-8b4cee515baf");
         assertTrue(metasysObjectReferenceFound,"MetasysObjectReference not found: METASYS1:RE1-NAE7/BACnet IP1.Modbus 433U11.Analog Inputs.AI-93");
     }
 
