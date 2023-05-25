@@ -88,4 +88,19 @@ public class MappedIdQuery {
     public void setSensorType(String sensorType) {
         this.sensorType = sensorType;
     }
+
+    @Override
+    public String toString() {
+        return "MappedIdQuery{" +
+                "predicate=" + predicate +
+                ", realEstate='" + realEstate + '\'' +
+                ", building='" + building + '\'' +
+                ", floor='" + floor + '\'' +
+                ", placementRoom='" + placementRoom + '\'' +
+                ", servesRoom='" + servesRoom + '\'' +
+                ", climateZone='" + climateZone + '\'' +
+                ", electricityZone='" + electricityZone + '\'' +
+                ", sensorType='" + sensorType + '\'' +
+                '}';
+    }
 }

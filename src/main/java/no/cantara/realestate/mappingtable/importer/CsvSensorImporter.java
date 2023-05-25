@@ -79,6 +79,15 @@ public abstract class CsvSensorImporter implements SensorImporter {
         if (columnNames.contains("Floor")) {
             sensorRecObject.setFloor(record.get("Floor"));
         }
+        if (columnNames.contains("Section")) {
+            sensorRecObject.setSection(record.get("Section"));
+        }
+        if (columnNames.contains("ServesRoom")) {
+            sensorRecObject.setServesRoom(record.get("ServesRoom"));
+        }
+        if (columnNames.contains("PlacementRoom")) {
+            sensorRecObject.setPlacementRoom(record.get("PlacementRoom"));
+        }
         if (columnNames.contains("ElectricityZone")) {
             sensorRecObject.setElectricityZone(record.get("ElectricityZone"));
         }

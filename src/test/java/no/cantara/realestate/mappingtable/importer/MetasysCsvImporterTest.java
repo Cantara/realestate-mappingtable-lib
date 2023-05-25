@@ -4,6 +4,7 @@ import no.cantara.realestate.mappingtable.MappedSensorId;
 import no.cantara.realestate.mappingtable.SensorId;
 import no.cantara.realestate.mappingtable.metasys.MetasysCsvSensorImporter;
 import no.cantara.realestate.mappingtable.metasys.MetasysSensorId;
+import no.cantara.realestate.mappingtable.rec.RecObject;
 import no.cantara.realestate.mappingtable.rec.SensorRecObject;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
@@ -80,10 +81,16 @@ class MetasysCsvImporterTest {
         List<MappedSensorId> mappedSensorIds = csvImporter.importMappedIdFromFile(Paths.get("src/test/resources/MetasysTfmRec.csv"));
         assertTrue(mappedSensorIds != null);
         assertEquals(1, mappedSensorIds.size());
+        assertTrue(mappedSensorIds.size() > 0);
+        RecObject recObject = mappedSensorIds.get(0).getRec();
+        assertEquals("Fløy1", recObject.getSection());
+        assertEquals("123", recObject.getServesRoom());
+        assertEquals("0123", recObject.getPlacementRoom());
 
         MetasysSensorId sensorId = (MetasysSensorId) mappedSensorIds.get(0).getSensorId();
         assertEquals("208540b1-ab8a-566a-8a41-8b4cee515baf", sensorId.getMetasysObjectId());
         assertEquals("METASYS1:RE1-NAE7/BACnet IP1.Modbus 433U11.Analog Inputs.AI-93", sensorId.getMetasysObjectReference());
+
 
     }
     //importMappedIdFromFile
