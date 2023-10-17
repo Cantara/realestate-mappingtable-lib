@@ -1,0 +1,2 @@
+Tfm,DesigoId,DesigoPropertyId,Name,Description,RealEstate,Interval,Building,Floor,Section,ServesRoom,PlacementRoom,ElectricityZone,SensorType,MeasurementUnit
+433.012-OE101-Energy,System1:GmsDevice_2_1016052_121634835,RAQual_Present_Value,433.012-OE101-Energy,Ventilasjon 360.011,RE1,15m,Building1,Floor1,Fløy1,123,0123,ventilasjon,Energy,kwh
