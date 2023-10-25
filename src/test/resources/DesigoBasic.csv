@@ -1,2 +1,2 @@
-DesigoId,DesigoPropertyId,RecId
-System1:GmsDevice_2_1016052_121634835,RAQual_Present_Value,aaa-bbb-ccc
+DesigoId,DesigoPropertyId,DesigoTrendId,RecId
+System1:GmsDevice_2_1016052_121634835,RAQual_Present_Value,TrendId1,aaa-bbb-ccc

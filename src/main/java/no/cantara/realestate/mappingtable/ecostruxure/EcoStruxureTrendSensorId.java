@@ -2,6 +2,7 @@ package no.cantara.realestate.mappingtable.ecostruxure;
 
 import no.cantara.realestate.mappingtable.SensorId;
 
+@Deprecated // Use no.cantara.realestate.sensors.ecostruxure.EcostruxureTrendSensorId from "typelib-java" instead
 public class EcoStruxureTrendSensorId extends SensorId {
 
     private final String trendId;

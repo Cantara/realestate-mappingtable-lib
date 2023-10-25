@@ -20,6 +20,7 @@ public class ReadDesigoCsvTest {
         Map record = collection.getRecords().get(0);
         assertEquals("System1:GmsDevice_2_1016052_121634835", record.get("DesigoId"));
         assertEquals("RAQual_Present_Value", record.get("DesigoPropertyId"));
+        assertEquals("TrendId1", record.get("DesigoTrendId"));
         assertEquals("aaa-bbb-ccc", record.get("RecId"));
     }
 

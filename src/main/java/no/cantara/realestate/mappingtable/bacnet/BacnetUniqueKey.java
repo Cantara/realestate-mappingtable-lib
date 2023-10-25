@@ -4,6 +4,7 @@ import no.cantara.realestate.mappingtable.UniqueKey;
 
 import java.util.Objects;
 
+@Deprecated // Use no.cantara.realestate.sensors.bacnet.BacnetUniqueKey from "typelib-java" instead
 public class BacnetUniqueKey implements UniqueKey<String> {
 
     private Integer deviceId;

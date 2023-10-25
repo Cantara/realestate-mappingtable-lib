@@ -10,6 +10,7 @@ import java.util.Objects;
  * The controller has an IP address, yet it is also identified by a device id.
  * The sensor is identified by a combination of  instance id and Object Type.
  */
+@Deprecated // Use no.cantara.realestate.sensors.bacnet.BacnetSensorId from "typelib-java" instead
 public class BacnetSensorId extends SensorId {
     private Integer deviceId; // Eg. Controller or "Undersentral"
     private Integer instanceId; // Eg. "Punkt" or "Punktgruppe"

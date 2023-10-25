@@ -4,6 +4,7 @@ import no.cantara.realestate.mappingtable.UniqueKey;
 
 import java.util.Objects;
 
+@Deprecated // Use no.cantara.realestate.sensors.metasys.MetasysUniqueKey from "typelib-java" instead
 public class MetasysUniqueKey implements UniqueKey<String> {
     private final String metasysObjectId;
     public MetasysUniqueKey(String metasysObjectId) {

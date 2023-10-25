@@ -2,6 +2,7 @@ package no.cantara.realestate.mappingtable;
 
 import no.cantara.realestate.mappingtable.rec.SensorRecObject;
 
+@Deprecated //use no.cantara.realestate.sensors.MappedSensorId from "typelib-java" in stead
 public class MappedSensorId {
 
     private final SensorId sensorId;

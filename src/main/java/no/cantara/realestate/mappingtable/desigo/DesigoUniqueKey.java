@@ -4,6 +4,7 @@ import no.cantara.realestate.mappingtable.UniqueKey;
 
 import java.util.Objects;
 
+@Deprecated // Use no.cantara.realestate.sensors.desigo.DesigoUniqueKey from "typelib-java" instead
 public class DesigoUniqueKey implements UniqueKey<String> {
 
     private String desigoId;

@@ -21,7 +21,7 @@ class DesigoTableSensorImporterTest {
     @BeforeEach
     void setUp() {
         List<Map<String, String>> rows = new ArrayList<>();
-        rows.add(createSensorConfigRow("Rec1", "DesigoId1", "DesigoPropertyId1", "CO2", "PPM"));
+        rows.add(createSensorConfigRow("Rec1", "DesigoId1", "DesigoPropertyId1", "TrendId1","CO2", "PPM"));
         desigoTableSensorImporter = new DesigoTableSensorImporter(rows);
 
     }
@@ -35,6 +35,7 @@ class DesigoTableSensorImporterTest {
         DesigoSensorId sensorId = (DesigoSensorId) sensorIds.get(0);
         assertEquals("DesigoId1", sensorId.getDesigoId());
         assertEquals("DesigoPropertyId1", sensorId.getDesigoPropertyId());
+        assertEquals("TrendId1", sensorId.getTrendId());
     }
 
     @Test
@@ -48,11 +49,12 @@ class DesigoTableSensorImporterTest {
         assertEquals("ServesRoom1", mappedSensorId.getRec().getServesRoom());
     }
 
-    private Map<String, String> createSensorConfigRow(String digitalTwinSensorId, String desigoId, String desigoPropertyId, String sensorType, String measurementUnit) {
+    private Map<String, String> createSensorConfigRow(String digitalTwinSensorId, String desigoId, String desigoPropertyId, String trendId, String sensorType, String measurementUnit) {
         Map<String, String> row = new HashMap<>();
         row.put("DigitalTwinSensorId", digitalTwinSensorId);
         row.put("DesigoId", desigoId);
         row.put("DesigoPropertyId", desigoPropertyId);
+        row.put("DesigoTrendId", trendId);
         row.put("SensorType", sensorType);
         row.put("Tfm", "todoTfm");
         row.put("Name", "todoName");

@@ -2,6 +2,8 @@ package no.cantara.realestate.mappingtable.metasys;
 
 import no.cantara.realestate.mappingtable.SensorId;
 
+
+@Deprecated // Use no.cantara.realestate.sensors.metasys.MetasysSensorId from "typelib-java" instead
 public class MetasysSensorId extends SensorId {
 
     private final String metasysObjectId;

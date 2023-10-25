@@ -1,5 +1,6 @@
 package no.cantara.realestate.mappingtable;
 
+@Deprecated // Use no.cantara.realestate.SensorId from "typelib-java" instead
 public abstract class SensorId {
 
     private String id;

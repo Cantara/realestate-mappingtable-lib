@@ -4,6 +4,7 @@ import no.cantara.realestate.mappingtable.UniqueKey;
 
 import java.util.Objects;
 
+@Deprecated // Use no.cantara.realestate.sensors.ecostruxure.EcostruxureUniqueKey from "typelib-java" instead
 public class EcoStruxureTrendUniqueKey implements UniqueKey<String> {
     private final String trendId;
 
