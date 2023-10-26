@@ -43,7 +43,10 @@ public class DesigoTableSensorImporter implements SensorImporter {
         List<MappedSensorId> mappedSensorIds = new ArrayList<>();
         for (Map<String, String> row : tableRows) {
             List<String> columnNames = new ArrayList<>(row.keySet());
-            SensorId sensorId = new DesigoSensorId(row.get("DesigoId"), row.get("DesigoPropertyId"));
+            DesigoSensorId sensorId = new DesigoSensorId(row.get("DesigoId"), row.get("DesigoPropertyId"));
+            if (row.containsKey("DesigoTrendId")) {
+                sensorId.setTrendId(row.get("DesigoTrendId"));
+            }
             SensorRecObject sensorRecObject = importSensorRecObject(columnNames, row);
             MappedSensorId mappedSensorId = new MappedSensorId(sensorId, sensorRecObject);
             mappedSensorIds.add(mappedSensorId);
