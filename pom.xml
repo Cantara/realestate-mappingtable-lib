@@ -35,6 +35,20 @@
       <logback.version>1.6.3</logback.version>
   </properties>
 
+  <dependencyManagement>
+      <dependencies>
+          <!-- Align every Netty module (including ones pulled in by ratpack and other
+               libraries) on one patched release; see the Netty advisories of 2026-09. -->
+          <dependency>
+              <groupId>io.netty</groupId>
+              <artifactId>netty-bom</artifactId>
+              <version>4.2.18.Final</version>
+              <type>pom</type>
+              <scope>import</scope>
+          </dependency>
+      </dependencies>
+  </dependencyManagement>
+
   <dependencies>
     <!-- Cantara configuration lib -->
     <dependency>
@@ -50,7 +64,7 @@
     <dependency>
       <groupId>io.netty</groupId>
       <artifactId>netty-codec</artifactId>
-      <version>4.2.10.Final</version>
+      <version>4.2.18.Final</version>
     </dependency>
 
     <dependency>
